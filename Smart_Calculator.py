@@ -2,7 +2,8 @@ class Calculator:
 
     def __init__(self):
         self.question = ''
-        self.numbers = []
+        self.numbers_string = []
+        self.numbers_float = []
         self.spaces = []
         self.operations = []
         self.result = 0
@@ -11,7 +12,7 @@ class Calculator:
     def input(self):
         question = input("Enter your Expression: ")
 
-    def parse(self, question, operations, numbers):
+    def parse(self, question, operations, numbers_string):
 
         for character in question:
 
@@ -23,18 +24,48 @@ class Calculator:
         
             elif character in '+-*/':
                 if buffer != '':
-                    numbers.append(buffer)
+                    numbers_string.append(buffer)
                     buffer = ''
                 operations.append(character)
         
             elif character == ' ':
                 if buffer != '':
-                    numbers.append(buffer)
+                    numbers_string.append(buffer)
                     buffer = ''
-        numbers.append(buffer)
+        numbers_string.append(buffer)
 
-    def evalutaion(self):
-        pass
+    def evalutaion(self, numbers_strings, operations, result):
+        numbers_floats = [float(number) for number in numbers_strings]
 
-    def output(self):
-        pass
+        for index in range(len(operations)):
+
+                if operations[index] == '+':
+
+                    if index > 0:
+                        result = result + numbers_floats[index + 1]
+                    elif index == 0:
+                        result = numbers_floats[index] + numbers_floats[index + 1]
+
+                elif operations[index] == '-':
+
+                    if index > 0:
+                        result = result - numbers_floats[index + 1]
+                    elif index == 0:
+                        result = numbers_floats[index] - numbers_floats[index + 1]
+
+                elif operations[index] == '*':
+
+                    if index > 0:
+                        result = result * numbers_floats[index + 1]
+                    elif index == 0:
+                        result =  numbers_floats[index] * numbers_floats[index + 1]
+
+                elif operations[index] == '/':
+
+                    if index > 0:
+                        result = result / numbers_floats[index + 1]
+                    elif index == 0:
+                        result = numbers_floats[index] / numbers_floats[index + 1]
+
+    def output(self, result):
+        print(f"Your total value: {result:.2f}")
