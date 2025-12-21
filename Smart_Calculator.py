@@ -1,12 +1,16 @@
 class Calculator:
 
     def __init__(self):
-        pass
+        self.numbers = []
+        self.spaces = []
+        self.operations = []
+        self.result = 0
+        self.buffer = ''
     
     def input(self):
-        pass
+        return input("Enter your Expression: ")
 
-    def parse(self, question):
+    def parse(self):
         pass
 
     def evalutaion(self):
@@ -14,4 +18,3 @@ class Calculator:
 
     def output(self):
         pass
-    
