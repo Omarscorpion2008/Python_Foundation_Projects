@@ -17,7 +17,7 @@ class Calculator:
         for character in self.question:
 
             if self.question[0] and character == '-':
-                self.buffer = self.buffer + str(self.character)
+                self.buffer = self.buffer + str(character)
         
             elif character.isnumeric()  or character == '.':
                 self.buffer = self.buffer + str(character)
@@ -34,12 +34,13 @@ class Calculator:
                     self.buffer = ''
 
         self.numbers_string.append(self.buffer)
+        self.buffer = ''
 
     def evalutaion(self):
         self.numbers_float = [float(number) for number in self.numbers_string]
 
         for index in range(len(self.operations)):
-
+                
                 if self.operations[index] == '+':
 
                     if index > 0:
@@ -69,9 +70,23 @@ class Calculator:
 
     def output(self):
         print(f"Your total value: {self.result:.2f}")
+        self.question = ''
+        self.numbers_string = []
+        self.numbers_float = []
+        self.spaces = []
+        self.operations = []
+        self.result = 0
+        self.buffer = ''
 
 calc = Calculator()
-calc.input()
-calc.parse()
-calc.evalutaion()
-calc.output()
+
+while True:
+    try:
+        if calc.input() != '':
+            calc.parse()
+            calc.evalutaion()
+            calc.output()
+    except (ValueError, TypeError):
+        print("Please enter valid values")
+    except ZeroDivisionError:
+        print("Cannot divide by zero")
