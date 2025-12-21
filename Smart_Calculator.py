@@ -10,62 +10,68 @@ class Calculator:
         self.buffer = ''
     
     def input(self):
-        question = input("Enter your Expression: ")
+        self.question = input("Enter your Expression: ")
 
-    def parse(self, question, operations, numbers_string):
+    def parse(self):
 
-        for character in question:
+        for character in self.question:
 
-            if question[0] and character == '-':
-                buffer = buffer + str(character)
+            if self.question[0] and character == '-':
+                self.buffer = self.buffer + str(self.character)
         
             elif character.isnumeric()  or character == '.':
-                buffer = buffer + str(character)
+                self.buffer = self.buffer + str(character)
         
             elif character in '+-*/':
-                if buffer != '':
-                    numbers_string.append(buffer)
-                    buffer = ''
-                operations.append(character)
+                if self.buffer != '':
+                    self.numbers_string.append(self.buffer)
+                    self.buffer = ''
+                self.operations.append(character)
         
             elif character == ' ':
-                if buffer != '':
-                    numbers_string.append(buffer)
-                    buffer = ''
-        numbers_string.append(buffer)
+                if self.buffer != '':
+                    self.numbers_string.append(self.buffer)
+                    self.buffer = ''
 
-    def evalutaion(self, numbers_strings, operations, result):
-        numbers_floats = [float(number) for number in numbers_strings]
+        self.numbers_string.append(self.buffer)
 
-        for index in range(len(operations)):
+    def evalutaion(self):
+        self.numbers_float = [float(number) for number in self.numbers_string]
 
-                if operations[index] == '+':
+        for index in range(len(self.operations)):
 
-                    if index > 0:
-                        result = result + numbers_floats[index + 1]
-                    elif index == 0:
-                        result = numbers_floats[index] + numbers_floats[index + 1]
-
-                elif operations[index] == '-':
+                if self.operations[index] == '+':
 
                     if index > 0:
-                        result = result - numbers_floats[index + 1]
+                        self.result = self.result + self.numbers_float[index + 1]
                     elif index == 0:
-                        result = numbers_floats[index] - numbers_floats[index + 1]
+                        self.result = self.numbers_float[index] + self.numbers_float[index + 1]
 
-                elif operations[index] == '*':
+                elif self.operations[index] == '-':
 
                     if index > 0:
-                        result = result * numbers_floats[index + 1]
+                        self.result = self.result - self.numbers_float[index + 1]
                     elif index == 0:
-                        result =  numbers_floats[index] * numbers_floats[index + 1]
+                        self.result = self.numbers_float[index] - self.numbers_float[index + 1]
 
-                elif operations[index] == '/':
+                elif self.operations[index] == '*':
 
                     if index > 0:
-                        result = result / numbers_floats[index + 1]
+                        self.result = self.result * self.numbers_float[index + 1]
                     elif index == 0:
-                        result = numbers_floats[index] / numbers_floats[index + 1]
+                        self.result =  self.numbers_float[index] * self.numbers_float[index + 1]
+                elif self.operations[index] == '/':
 
-    def output(self, result):
-        print(f"Your total value: {result:.2f}")
+                    if index > 0:
+                        self.result = self.result / self.numbers_float[index + 1]
+                    elif index == 0:
+                        self.result = self.numbers_float[index] / self.numbers_float[index + 1]
+
+    def output(self):
+        print(f"Your total value: {self.result:.2f}")
+
+calc = Calculator()
+calc.input()
+calc.parse()
+calc.evalutaion()
+calc.output()
