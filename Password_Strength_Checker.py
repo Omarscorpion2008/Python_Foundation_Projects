@@ -11,14 +11,17 @@ class password_checker:
 
         if all(c.isspace() for c in self.password) or self.password == '':
             self.score = 0
+            return self.score
 
         if len(self.password) < 14:
             self.score = 0
+            return self.score
 
         if len(self.password) >= 14:
             self.score = self.score + 4
             if len(self.password) > 14:
                 bonus = (len(self.password) - 14) / 2
+                bonus = min(bonus, 5)
                 self.score = self.score + bonus
         
         if any(c.islower() for c in self.password):
