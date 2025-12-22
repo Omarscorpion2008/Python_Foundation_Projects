@@ -7,5 +7,14 @@ class password_checker:
         self.password = input("Enter a Password: ")
         
     def evaluations(self):
+        pass
 
     def output(self):
+        if self.score <= 3:
+            print(f"Weak Password: {self.score}")
+        elif self.score >= 4 or self.score <= 6:
+            print(f"Medium Password: {self.score}")
+        elif self.score >= 7 or self.score <= 9:
+            print(f"Strong Password: {self.score}")
+        elif self.score >= 10:
+            print(f"Very strong password: {self.score}")
