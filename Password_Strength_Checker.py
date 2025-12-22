@@ -4,7 +4,8 @@ class password_checker:
         self.score = 0
     
     def input(self):
-    
+        self.password = input("Enter a Password: ")
+        
     def evaluations(self):
 
     def output(self):
