@@ -86,7 +86,5 @@ while True:
             calc.parse()
             calc.evalutaion()
             calc.output()
-    except (ValueError, TypeError):
-        print("Please enter valid values")
     except ZeroDivisionError:
         print("Cannot divide by zero")
