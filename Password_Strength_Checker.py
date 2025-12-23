@@ -2,6 +2,7 @@ class password_checker:
     def __init__(self):
         self.password = ''
         self.buffer = ''
+        self.sub = 0
         self.score = 0.0
     
     def input(self):
@@ -38,16 +39,35 @@ class password_checker:
 
         if not any(c.isalpha() for c in self.password):
             self.score = min(self.score, 4)
+            
+        for character in self.password:
+    
+            if self.buffer == '' or character == self.buffer[-1]:
+                self.buffer = self.buffer + character 
+            elif character != self.buffer[-1]:
+                if len(self.buffer) > 2:
+                    self.sub = len(self.buffer)
+                    self.sub = min(self.sub, 3)
+                    self.score = self.score - self.sub
+                    self.buffer = character
+            else:
+                self.buffer = character
+
+            if len(self.buffer) != 1:
+                self.sub = len(self.buffer)
+                self.score = self.score - self.sub
+                self.buffer = character            
 
     def output(self):
-
-        if self.score <= 4:
+        self.score = self.score / 2
+        
+        if self.score <= 2:
             print(f"Weak Password: {self.score}")
-        elif self.score >= 5 and self.score <= 10:
+        elif self.score >= 2.5 and self.score <= 5:
             print(f"Medium Password: {self.score}")
-        elif self.score >= 11 and self.score <= 20:
+        elif self.score >= 6.5 and self.score <= 10:
             print(f"Strong Password: {self.score}")
-        elif self.score > 20:
+        elif self.score > 10:
             print(f"Very strong password: {self.score}")
 
 pass_checker = password_checker()
