@@ -10,6 +10,10 @@ class password_checker:
 
     def evaluations(self):
 
+        self.score = 0.0
+        self.buffer = ''
+        self.sub = 0
+
         if all(c.isspace() for c in self.password) or self.password == '':
             self.score = 0
             return self.score
@@ -20,10 +24,9 @@ class password_checker:
 
         if len(self.password) >= 14:
             self.score = self.score + 4
-            if len(self.password) > 14:
-                bonus = (len(self.password) - 14) / 2
-                bonus = min(bonus, 5)
-                self.score = self.score + bonus
+            bonus = (len(self.password) - 14) / 2
+            bonus = min(bonus, 5)
+            self.score = self.score + bonus
         
         if any(c.islower() for c in self.password):
             self.score = self.score + 2
@@ -39,24 +42,20 @@ class password_checker:
 
         if not any(c.isalpha() for c in self.password):
             self.score = min(self.score, 4)
-            
+
         for character in self.password:
     
             if self.buffer == '' or character == self.buffer[-1]:
                 self.buffer = self.buffer + character 
-            elif character != self.buffer[-1]:
+            else:
                 if len(self.buffer) > 2:
-                    self.sub = len(self.buffer)
-                    self.sub = min(self.sub, 3)
+                    self.sub = min(len(self.buffer), 3)
                     self.score = self.score - self.sub
                     self.buffer = character
-            else:
-                self.buffer = character
-
-            if len(self.buffer) != 1:
-                self.sub = len(self.buffer)
-                self.score = self.score - self.sub
-                self.buffer = character            
+        if len(self.buffer) > 2:
+            self.sub = min(len(self.buffer), 3)
+            self.score = self.score - self.sub
+            self.buffer = character            
 
     def output(self):
         self.score = self.score / 2
@@ -72,6 +71,12 @@ class password_checker:
 
 pass_checker = password_checker()
 
-pass_checker.input()
-pass_checker.evaluations()
-pass_checker.output()
+print("-" * 20)
+print("- Password Strength Checker-")
+print("-" * 20)
+
+
+while True:
+    pass_checker.input()
+    pass_checker.evaluations()
+    pass_checker.output()
