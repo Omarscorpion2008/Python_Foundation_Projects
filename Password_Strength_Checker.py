@@ -71,9 +71,9 @@ class password_checker:
 
 pass_checker = password_checker()
 
-print("-" * 20)
-print("- Password Strength Checker-")
-print("-" * 20)
+print("-" * 30)
+print("- Password Strength Checker -")
+print("-" * 30)
 
 
 while True:
