@@ -76,32 +76,35 @@ class Guessing_games:
     
     def level_easy(self):
         try:
-            while self.attempts < 5 or self.guess != self.target_number:  
-                self.guess = int(input("\n Enter your guess: "))
-                if self.guess > self.target_number:
-                    print(f"\n Wrong, guess lower")
-                    self.attempts = self.attempts + 1
-                    Guessing_games.helper(self)
-                elif self.guess < self.target_number:
-                    print(f"\n Wrong, guess higher")
-                    self.attempts = self.attempts + 1
-                    Guessing_games.helper(self)
-                elif self.guess == self.target_number:
-                    print(f"\n Correct! {self.target_number} was indeed the number!") 
-                    if self.attempts == 0:
-                        self.current_score = self.current_score + 6
-                    elif self.attempts == 1:
-                        self.current_score = self.current_score + 5
-                    elif self.attempts == 2:
-                        self.current_score = self.current_score + 4
-                    elif self.attempts == 3:
-                        self.current_score = self.current_score + 3
-                    elif self.attempts == 4:
-                        self.current_score = self.current_score + 2
-                    elif self.attempts == 5:
-                        self.current_score = self.current_score + 1
-                    if self.current_score > self.high_score:
-                        self.high_score = self.current_score
+            while True:
+                if self.attempts < 5 or self.guess == self.target_number:  
+                    self.guess = int(input("\n Enter your guess: "))
+                    if self.guess > self.target_number:
+                        print(f"\n Wrong, guess lower")
+                        self.attempts = self.attempts + 1
+                        Guessing_games.helper(self)
+                    elif self.guess < self.target_number:
+                        print(f"\n Wrong, guess higher")
+                        self.attempts = self.attempts + 1
+                        Guessing_games.helper(self)
+                    elif self.guess == self.target_number:
+                        print(f"\n Correct! {self.target_number} was indeed the number!") 
+                        if self.attempts == 0:
+                            self.current_score = self.current_score + 6
+                        elif self.attempts == 1:
+                            self.current_score = self.current_score + 5
+                        elif self.attempts == 2:
+                            self.current_score = self.current_score + 4
+                        elif self.attempts == 3:
+                            self.current_score = self.current_score + 3
+                        elif self.attempts == 4:
+                            self.current_score = self.current_score + 2
+                        elif self.attempts == 5:
+                            self.current_score = self.current_score + 1
+                        if self.current_score > self.high_score:
+                            self.high_score = self.current_score
+                        Guessing_games.output(self)
+                else:    
                     Guessing_games.output(self)
                         
         except (TypeError, ValueError):
@@ -111,32 +114,35 @@ class Guessing_games:
     
     def level_medium(self):
         try:
-            while self.attempts < 5 or self.guess != self.target_number:  
-                self.guess = int(input("\n Enter your guess: "))
-                if self.guess > self.target_number:
-                    print(f"\n Wrong, guess lower")
-                    self.attempts = self.attempts + 1
-                    Guessing_games.helper(self)
-                elif self.guess < self.target_number:
-                    print(f"\n Wrong, guess higher")
-                    self.attempts = self.attempts + 1
-                    Guessing_games.helper(self)
-                elif self.guess == self.target_number:
-                    print(f"\n Correct! {self.target_number} was indeed the number!") 
-                    if self.attempts == 0:
-                        self.current_score = self.current_score + 10
-                    elif self.attempts == 1:
-                        self.current_score = self.current_score + 8
-                    elif self.attempts == 2:
-                        self.current_score = self.current_score + 7
-                    elif self.attempts == 3:
-                        self.current_score = self.current_score + 6
-                    elif self.attempts == 4:
-                        self.current_score = self.current_score + 5
-                    elif self.attempts == 5:
-                        self.current_score = self.current_score + 4
-                    if self.current_score > self.high_score:
-                        self.high_score = self.current_score
+            while True:
+                if self.attempts < 5 or self.guess == self.target_number:  
+                    self.guess = int(input("\n Enter your guess: "))
+                    if self.guess > self.target_number:
+                        print(f"\n Wrong, guess lower")
+                        self.attempts = self.attempts + 1
+                        Guessing_games.helper(self)
+                    elif self.guess < self.target_number:
+                        print(f"\n Wrong, guess higher")
+                        self.attempts = self.attempts + 1
+                        Guessing_games.helper(self)
+                    elif self.guess == self.target_number:
+                        print(f"\n Correct! {self.target_number} was indeed the number!") 
+                        if self.attempts == 0:
+                            self.current_score = self.current_score + 10
+                        elif self.attempts == 1:
+                            self.current_score = self.current_score + 9
+                        elif self.attempts == 2:
+                            self.current_score = self.current_score + 8
+                        elif self.attempts == 3:
+                            self.current_score = self.current_score + 7
+                        elif self.attempts == 4:
+                            self.current_score = self.current_score + 6
+                        elif self.attempts == 5:
+                            self.current_score = self.current_score + 5
+                        if self.current_score > self.high_score:
+                            self.high_score = self.current_score
+                        Guessing_games.output(self)
+                else:    
                     Guessing_games.output(self)
                         
         except (TypeError, ValueError):
@@ -145,32 +151,35 @@ class Guessing_games:
     
     def level_hard(self):
         try:
-            while self.attempts < 5 or self.guess != self.target_number:  
-                self.guess = int(input("\n Enter your guess: "))
-                if self.guess > self.target_number:
-                    print(f"\n Wrong, guess lower")
-                    self.attempts = self.attempts + 1
-                    Guessing_games.helper(self)
-                elif self.guess < self.target_number:
-                    print(f"\n Wrong, guess higher")
-                    self.attempts = self.attempts + 1
-                    Guessing_games.helper(self)
-                elif self.guess == self.target_number:
-                    print(f"\n Correct! {self.target_number} was indeed the number!")
-                    if self.attempts == 0:
-                        self.current_score = self.current_score + 35
-                    elif self.attempts == 1:
-                        self.current_score = self.current_score + 30
-                    elif self.attempts == 2:
-                        self.current_score = self.current_score + 25
-                    elif self.attempts == 3:
-                        self.current_score = self.current_score + 20
-                    elif self.attempts == 4:
-                        self.current_score = self.current_score + 15
-                    elif self.attempts == 5:
-                        self.current_score = self.current_score + 10
-                    if self.current_score > self.high_score:
-                        self.high_score = self.current_score
+            while True:
+                if self.attempts < 5 or self.guess == self.target_number:  
+                    self.guess = int(input("\n Enter your guess: "))
+                    if self.guess > self.target_number:
+                        print(f"\n Wrong, guess lower")
+                        self.attempts = self.attempts + 1
+                        Guessing_games.helper(self)
+                    elif self.guess < self.target_number:
+                        print(f"\n Wrong, guess higher")
+                        self.attempts = self.attempts + 1
+                        Guessing_games.helper(self)
+                    elif self.guess == self.target_number:
+                        print(f"\n Correct! {self.target_number} was indeed the number!") 
+                        if self.attempts == 0:
+                            self.current_score = self.current_score + 35
+                        elif self.attempts == 1:
+                            self.current_score = self.current_score + 30
+                        elif self.attempts == 2:
+                            self.current_score = self.current_score + 25
+                        elif self.attempts == 3:
+                            self.current_score = self.current_score + 20
+                        elif self.attempts == 4:
+                            self.current_score = self.current_score + 15
+                        elif self.attempts == 5:
+                            self.current_score = self.current_score + 10
+                        if self.current_score > self.high_score:
+                            self.high_score = self.current_score
+                        Guessing_games.output(self)
+                else:    
                     Guessing_games.output(self)
                         
         except (TypeError, ValueError):
