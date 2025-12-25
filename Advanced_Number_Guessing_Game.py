@@ -1,5 +1,5 @@
-from multiprocessing import Value
 import random
+from urllib.parse import ParseResultBytes
 ## add an option to show either it's odd or even
 class Guessing_games:
     def __init__(self):
@@ -28,6 +28,33 @@ class Guessing_games:
                     self.target_number = random.randint(0, 300)
     
                 while self.attempts <= 6 or self.guess != self.target_number:
+                    
+                    #HELPER
+                    if self.attempts == 3:
+                        self.helper = input("Would you like to know whether the number is an odd or an even? (y/n): ")
+                        if self.helper.lower() == 'y':
+                            if self.target_number % 2 == 1:
+                                print("The number is odd")
+                                if self.difficulty == 'e':
+                                    self.current_score = self.current_score - 3
+                                elif self.difficulty == 'm':
+                                    self.current_score = self.current_score - 2
+                                elif self.difficulty == 'h':
+                                    self.current_score = self.current_score - 1
+                            elif self.target_number % 2 == 0:
+                                print("The number is even")
+                                if self.difficulty == 'e':
+                                    self.current_score = self.current_score - 3
+                                elif self.difficulty == 'm':
+                                    self.current_score = self.current_score - 2
+                                elif self.difficulty == 'h':
+                                    self.current_score = self.current_score - 1
+                        elif self.helper.lower() == 'n':
+                            print("Your lose..")
+                        else:
+                            pass
+                            
+                    
                 # EASY LEVEL
                     if self.difficulty.lower() == 'e':
                 
@@ -141,7 +168,7 @@ class Guessing_games:
             self.output()
         else:
             print("Thanks for playing!")
-            exit
+            quit()
 
 game = Guessing_games()
 
