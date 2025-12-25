@@ -1,7 +1,4 @@
 import random
-from unittest import skip
-from urllib.parse import ParseResultBytes
-## add an option to show either it's odd or even
 class Guessing_games:
     def __init__(self):
         self.high_score = 0
