@@ -24,7 +24,7 @@ class Calculator:
                 elif character.upper() == 'K':
                     self.kelvin = float(self.buffer)
         
-        if self.celsius == 0 or self.fahrenheit == 0 or self.kelvin == 0:
+        if self.celsius == 0 and self.fahrenheit == 0 and self.kelvin == 0:
             print("Please provide a valid input.")
             self.user_input_classifier()
             
@@ -76,8 +76,8 @@ print('-' * 21)
 print(' - Unit Conversion -')
 print('-' * 21)
 while True:
-    try:
-        calc.user_input_classifier()
-    except (TypeError, ValueError):
-        print("Please provide valid input.")
-        calc.user_input_classifier()
+        try:
+            calc.user_input_classifier()
+        except (TypeError, ValueError):
+            print("Please provide valid input.")
+            calc.user_input_classifier()
