@@ -13,7 +13,7 @@ class Calculator:
         self.question = input("Enter your Expression: ")
 
     def parse(self):
-
+    
         for character in self.question:
 
             if self.question[0] and character == '-':
@@ -35,8 +35,8 @@ class Calculator:
 
         self.numbers_string.append(self.buffer)
         self.buffer = ''
-
-    def evalutaion(self):
+                    
+    def evaluation(self):
         self.numbers_float = [float(number) for number in self.numbers_string]
 
         for index in range(len(self.operations)):
@@ -84,7 +84,7 @@ while True:
     try:
         if calc.input() != '':
             calc.parse()
-            calc.evalutaion()
+            calc.evaluation()
             calc.output()
     except ZeroDivisionError:
         print("Cannot divide by zero")
