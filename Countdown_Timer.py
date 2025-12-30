@@ -6,7 +6,7 @@ class Timer:
         self.hours = int(self.parts[0])
         self.minutes = int(self.parts[1])
         self.seconds = int(self.parts[2])
-        
+
         if self.user_input != '':
             Timer.Time_Calculator(self)
         else:
@@ -29,10 +29,20 @@ class Timer:
             time.sleep(1)
         print("! TIME'S UP !")
 
+print("-" * 21)
+print(" - Countdown Timer - ")
+print("-" * 21)
+
 countdown = Timer()
 while True:
     try:
         countdown.user_input_classifier()
-    except (ValueError, TypeError, IndexError):
+    except ValueError:
         print("Please provide valid inputs.")
+        countdown.user_input_classifier()
+    except TypeError:
+        print("Please provide valid inputs.")
+        countdown.user_input_classifier()
+    except IndexError:
+        print("Please Provide Valid Input.")
         countdown.user_input_classifier()
