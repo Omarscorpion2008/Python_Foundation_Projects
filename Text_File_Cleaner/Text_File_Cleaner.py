@@ -2,7 +2,8 @@ import os
 class Text_Cleaner:
     def start(self):
         self.buffer = ''
-        self.content = open('C:/Users/omara/OneDrive/Documents/Github/Python_Foundation_Projects/Text_File_Cleaner/old_text.txt', 'r', encoding='utf-8')
+        with open('C:/Users/omara/OneDrive/Documents/Github/Python_Foundation_Projects/Text_File_Cleaner/old_text.txt', 'r', encoding='utf-8') as file:
+            self.content = file.read()
         
         Text_Cleaner.normalizer(self)
 
@@ -28,7 +29,7 @@ class Text_Cleaner:
             elif character.islower() and not self.buffer[-1].isalpha():
                 self.buffer = self.buffer + character
 
-            if character == ' ' and self.buffer[-1] in ".,?!'":
+            if character == ' ' and self.buffer[-1] in ",?!';":
                 self.buffer = self.buffer + character
             elif character == ' ' and ( self.buffer[-1].isupper() or self.buffer[-1].islower() ):
                 self.buffer = self.buffer + character
@@ -37,11 +38,11 @@ class Text_Cleaner:
 
             if character in "'":
                 self.buffer = self.buffer + character 
-            if character in ".,?!" and self.buffer[-1] == ' ':
+            if character in ",?!;" and self.buffer[-1] == ' ':
                 self.buffer = self.buffer[:-1]
-            if character in ".,?!" and self.buffer[-1] == character:
+            if character in ",?!;" and self.buffer[-1] == character:
                 self.buffer = self.buffer[:-1]   
-            if character in ".,?!":
+            if character in ",?!;":
                 self.buffer = self.buffer + character + " "
             if character == '.':
                 self.buffer = self.buffer + character + "\n"
