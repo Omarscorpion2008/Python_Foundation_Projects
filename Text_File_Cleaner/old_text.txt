@@ -1,1 +1,1 @@
-Type any text here and the program will print it after correcting it.
+Type any text here and the program will print it after correcting.

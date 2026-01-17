@@ -1,10 +1,34 @@
 class Survey_Analyser:
     def __init__(self):
-        self.file = open('C:/Users/query1/Desktop/OmarScorpion2008/Python_Foundation_Projects/Survey_Analysis/database.txt', 'a+', encoding='utf-8')
-        self.questioner()
+
+        self.total_satisfied = 0
+        self.total_rating = 0
+        self.total_recommendation = 0
+        self.heard_from = []
+        self.service_reusage = []
+        self.service_expectation = []
+        self.usage_frequency = []
+
+        self.file = open('C:/Users/omara/OneDrive/Documents/GitHub/Python_Foundation_Projects/Survey_Analysis/database.txt', 'a+', encoding='utf-8')
+        self.startup()
         self.file.close()
 
+    def startup(self):
+
+        self.user_input = input("Data injection (i) or Data analyze (a) or quit (q): ")
+        if self.user_input.lower() == 'i':
+            self.questioner()
+        elif self.user_input.lower() == 'a':
+            self.analyzer()
+        elif self.user_input.lower() == 'q':
+            print("Thanks for using our project! ")
+            exit()
+        else:
+            print("Please provide valid input.")
+            self.startup()
+    
     def questioner(self):
+
         q1 = input("How satisfied are you with our service? (1–5): ")
         self.file.write(f"{q1},")
 
@@ -25,8 +49,11 @@ class Survey_Analyser:
 
         q7 = input("How often do you use the app?(Daily, Weekly, Monthly, Rarely): ")
         self.file.write(f"{q7},\n")
-        self.analyser()
 
-    def analyser(self):
+        print("Data injection completed.")
+        self.startup()
+        
+    def analyzer(self):
         pass
+
 survey = Survey_Analyser()
