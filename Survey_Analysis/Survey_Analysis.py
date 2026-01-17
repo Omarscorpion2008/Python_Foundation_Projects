@@ -31,6 +31,7 @@ class Survey_Analyser:
         self.weekly_percentage = 0
         self.monthly_percentage = 0
         self.rarely_percentage = 0
+
         self.startup()
 
     def startup(self):
@@ -112,11 +113,13 @@ class Survey_Analyser:
             self.total_usability_score = self.total_usability_score + int(buffer_list[1])
             self.total_usability_score_list.append(buffer_list[1])
             self.total_recommendation = self.total_recommendation + int(buffer_list[2])
-            self.total_recommendation.append(buffer_list[2])
+            self.total_recommendation_list.append(buffer_list[2])
             self.heard_from.append(buffer_list[3])
             self.service_reusage.append(buffer_list[4])
             self.service_expectation.append(buffer_list[5])
-            self.usage_frequency.append(buffer_list[6])        
+            self.usage_frequency.append(buffer_list[6])
+
+        self.analyzer()    
 
     def analyzer(self):
 
@@ -124,10 +127,10 @@ class Survey_Analyser:
         self.average_usability_score = self.total_usability_score / int(len(self.total_usability_score_list))
         self.average_recommendation_score = self.total_recommendation / int(len(self.total_recommendation_list))
 
-        self.socialmedia_percentage = (self.total_recommendation_list.count("Social Media") / len(self.total_recommendation_list)) * 100
-        self.friend_percentage = (self.total_recommendation_list.count("Friend") / len(self.total_recommendation_list)) * 100
-        self.advertisement_percentage = (self.total_recommendation_list.count("Advertisement") / len(self.total_recommendation_list)) * 100
-        self.other_percentage = (self.total_recommendation_list.count("other") / len(self.total_recommendation_list)) * 100
+        self.socialmedia_percentage = (self.heard_from.count("Social Media") / len(self.heard_from)) * 100
+        self.friend_percentage = (self.heard_from.count("Friend") / len(self.heard_from)) * 100
+        self.advertisement_percentage = (self.heard_from.count("Advertisement") / len(self.heard_from)) * 100
+        self.other_percentage = (self.heard_from.count("other") / len(self.heard_from)) * 100
 
         self.reusage_yes_percentage = (self.service_reusage.count("y") / len(self.service_reusage)) * 100
         self.reusage_no_percentage = (self.service_reusage.count("n") / len(self.service_reusage)) * 100
@@ -135,15 +138,37 @@ class Survey_Analyser:
         self.expectations_yes_percentage = (self.service_expectation.count("y") / len(self.service_expectation)) * 100
         self.expectations_no_percentage = (self.service_expectation.count("n") / len(self.service_expectation)) * 100
 
-        self.daily_percentage = (self.heard_from.count("Daily") / len(self.heard_from)) * 100
-        self.weekly_percentage = (self.heard_from.count("Weekly") / len(self.heard_from)) * 100
-        self.monthly_percentage = (self.heard_from.count("Monthly") / len(self.heard_from)) * 100
-        self.rarely_percentage = (self.heard_from.count("Rarely") / len(self.heard_from)) * 100
-
-        self.file.close()
+        self.daily_percentage = (self.usage_frequency.count("Daily") / len(self.usage_frequency)) * 100
+        self.weekly_percentage = (self.usage_frequency.count("Weekly") / len(self.usage_frequency)) * 100
+        self.monthly_percentage = (self.usage_frequency.count("Monthly") / len(self.usage_frequency)) * 100
+        self.rarely_percentage = (self.usage_frequency.count("Rarely") / len(self.usage_frequency)) * 100
 
         self.output()
+        self.file.close()
+
+
     def output(self):
-        pass
+
+        print('-' * 30)
+        print(' -     Analysis result     -')
+        print('-' * 30)
+        print(f"\nAverage Satisfaction : {self.average_satisfaction:.2}")
+        print(f"Average Usability Score : {self.average_usability_score:.2}")
+        print(f"Average Recommendation Score : {self.average_recommendation_score:.2}")
+        print("\nHow did the user hear about the program ?")
+        print(f"Social Media : {self.socialmedia_percentage:2}%")
+        print(f"Friends : {self.friend_percentage:2}%")
+        print(f"Advertisement : {self.advertisement_percentage:2}%")
+        print(f"other : {self.other_percentage:2}%")
+        print("\nWould the user use the program again ?")
+        print(f"Yes : {self.reusage_yes_percentage:2}% | No : {self.reusage_no_percentage:2}%")
+        print("\nDid the program meet the user's expectations ?")
+        print(f"Yes : {self.expectations_yes_percentage:2}% | No : {self.expectations_no_percentage:2}%")
+        print("\nHow often does the user use the program ?")
+        print(f"Daily : {self.daily_percentage:2}%")
+        print(f"Weekly : {self.weekly_percentage:2}%")
+        print(f"Monthly : {self.monthly_percentage:2}%")
+        print(f"Rarely : {self.rarely_percentage:2}%")
+
 
 survey = Survey_Analyser()
