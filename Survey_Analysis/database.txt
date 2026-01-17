@@ -1,2 +1,44 @@
-5,10,10,Friend,y,y,Daily
-1,1,0,Advertisement,n,n,Rarely
+5,9,8,Social Media,y,y,Daily
+4,7,6,Friend,y,y,Weekly
+3,8,5,Advertisement,n,n,Monthly
+2,6,3,other,n,n,Rarely
+5,10,9,Social Media,y,y,Daily
+4,9,7,Friend,y,y,Weekly
+1,5,2,Advertisement,n,n,Rarely
+3,6,4,other,n,n,Monthly
+5,8,9,Social Media,y,y,Daily
+4,7,6,Friend,y,y,Weekly
+3,9,8,Advertisement,n,y,Monthly
+2,4,1,other,n,n,Rarely
+5,9,10,Social Media,y,y,Daily
+4,8,7,Friend,y,y,Weekly
+3,7,6,Advertisement,n,y,Monthly
+1,3,2,other,n,n,Rarely
+5,10,10,Social Media,y,y,Daily
+4,9,8,Friend,y,y,Weekly
+3,8,7,Advertisement,n,y,Monthly
+2,5,4,other,n,n,Rarely
+5,9,9,Social Media,y,y,Daily
+4,7,5,Friend,y,n,Weekly
+3,6,4,Advertisement,n,n,Monthly
+2,4,3,other,n,n,Rarely
+5,10,10,Social Media,y,y,Daily
+4,9,8,Friend,y,y,Weekly
+3,7,5,Advertisement,n,n,Monthly
+1,2,1,other,n,n,Rarely
+5,8,9,Social Media,y,y,Daily
+4,6,7,Friend,y,y,Weekly
+3,5,4,Advertisement,n,n,Monthly
+2,3,2,other,n,n,Rarely
+5,10,9,Social Media,y,y,Daily
+4,9,6,Friend,y,y,Weekly
+3,7,3,Advertisement,n,n,Monthly
+1,4,2,other,n,n,Rarely
+5,9,8,Social Media,y,y,Daily
+4,8,7,Friend,y,y,Weekly
+3,7,6,Advertisement,n,n,Monthly
+2,5,3,other,n,n,Rarely
+5,9,9,Social Media,y,y,Daily
+4,6,6,Friend,y,y,Weekly
+3,8,5,Advertisement,n,y,Monthly
+2,4,2,other,n,n,Rarely
