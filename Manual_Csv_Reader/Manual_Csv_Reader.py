@@ -1,5 +1,7 @@
 class csv_reader:
     def __init__(self):
+        self.numerical_columns = []
+        self.alphabet_columns = []
         self.database = {}
         self.data_loader()
     
@@ -26,5 +28,27 @@ class csv_reader:
         self.data_analyzer()
         
     def data_analyzer(self):
-        pass
+            
+        self.total_number_of_rows = len(self.data_lines)
+        self.total_number_of_columns = len(self.database.keys())
+        self.total_number_of_values = self.total_number_of_columns * self.total_number_of_rows
+            
+        for key in self.database:
+            self.number_of_empty_values = self.total_number_of_rows - len(self.database[key])
+            if self.number_of_empty_values >= 1 :
+                print(f"Number of empty values in {key} : {self.number_of_empty_values}.")
+            else:
+                pass
+        
+        for key, values in self.database.items():
+            if all(isinstance(v, (int, float)) for v in values):
+                print(f"The column {key} is numeric")
+                self.numerical_columns.append(self.database[key])
+
+            elif all(isinstance(v, str) and v.isalpha() for v in values):
+                print(f"The column {key} is alphabetic")
+                self.alphabet_columns.append(self.database[key])
+
+                
+                
 reader = csv_reader()
