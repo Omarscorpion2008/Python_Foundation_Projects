@@ -21,10 +21,10 @@ class csv_reader:
         for row in self.data_lines:
             row_items = row.split(',')
             for index, value in enumerate(row_items):
-                if item.isalpha() :
-                    self.database[list(self.database.keys())[index]].append(str(value))
-                elif item.isnumeric() :
+                try:
                     self.database[list(self.database.keys())[index]].append(float(value))
+                except ValueError:
+                    self.database[list(self.database.keys())[index]].append(value)
         self.data_analyzer()
         self.file.close()
 
@@ -50,7 +50,7 @@ class csv_reader:
                 print(f"The column {key} is numeric")
                 self.numerical_columns.append(str(key))
 
-            elif all(isinstance(v, str) and v.isalpha() for v in values):
+            elif all(isinstance(v, str) for v in values):
                 print(f"The column {key} is alphabetic")
                 self.alphabet_columns.append(str(key))
 
@@ -71,15 +71,20 @@ class csv_reader:
         print('-' * 50)
 
         for key in self.numerical_columns:
-            middle_number = len(self.database[key]) / 2
-            middle_value = sorted(self.database[key])[int(middle_number)]
-            print(f"{key} median : {middle_value}")
+            sorted_list = sorted(self.database[key])
+            n = len(sorted_list)
+            if n % 2 == 1:
+                median = sorted_list[n//2]
+            else:
+                median = (sorted_list[n//2 - 1] + sorted_list[n//2]) / 2
+                
+            print(f"{key} median : {median}")
         
         print('-' * 50)
 
         for key in self.numerical_columns:
             self.total_std_sum = 0
-            mean_number = sum(self.database[key][values]) / len(self.database[key])
+            mean_number = sum(self.database[key]) / len(self.database[key])
             
             for item in self.database[key]:
                 self.total_std_sum = self.total_std_sum + (float(item) - float(mean_number))**2
