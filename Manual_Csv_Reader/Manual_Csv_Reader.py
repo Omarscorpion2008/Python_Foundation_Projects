@@ -126,7 +126,7 @@ class csv_reader:
 
         for key in self.database:
             percentage = 0
-            print(f"{key} :",end='')
+            print(f"{key} percentages :",end='')
             for item in set(self.database[key]):
                 percentage = ( self.database[key].count(item) / len(self.database[key])) * 100
                 print(f"\n{item} : {percentage:.2f}%", end='')
