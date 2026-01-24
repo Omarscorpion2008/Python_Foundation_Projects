@@ -4,18 +4,20 @@ class to_do_list:
         self.startup()
 
     def startup(self):
-        user_input = input("Data Injection (i) | Load (l) | edit (e) | exit (q): ")
-        if user_input.lower() == 'i':
-            self.data_injection()
-        elif user_input.lower() == 'l':
-            self.data_loader()
-        elif user_input.lower() == 'e':
-            self.data_editor()
-        elif user_input.lower() == 'q':
-            print("Thanks for using the app!")
-            exit()
-        else:
-            self.startup()
+        while True:
+            user_input = input("Data Injection (i) | Load (l) | edit (e) | exit (q): ")PO
+            if user_input.lower() == 'i':
+                self.data_injection()
+            elif user_input.lower() == 'l':
+                self.data_loader()
+            elif user_input.lower() == 'e':
+                self.data_editor()
+            elif user_input.lower() == 'q':
+                print("Thanks for using the app!")
+                break
+            else:
+                print("Invalid choice.")
+
 
     def data_injection(self):
 
@@ -39,6 +41,7 @@ class to_do_list:
             items = line.split(',')
             self.database[items[0]] = str(items[-1])
 
+        print('-' * 20)
         print("- un-done tasks -")
         for key, value in self.database.items():
             if value == 'un-done':
@@ -47,6 +50,22 @@ class to_do_list:
         self.file.close()
 
     def data_editor(self):
+        self.file = open('File_Based_To_Do_List/list.txt', 'r', encoding='utf-8')
+        self.content = self.file.read()
+        self.lines_list = self.content.splitlines()
+        for line in self.lines_list:
+            items = line.split(',')
+            self.database[items[0]] = str(items[-1])
+
+        user_input = input("Which task are you done with? (index or name): ")
+        if user_input.isnumeric():
+            del self.database[list(self.database.keys())[int(user_input)]]
+        else:
+            del self.database[str(user_input)]  
+        
         self.file = open('File_Based_To_Do_List/list.txt', 'w', encoding='utf-8')
+
+        for key in self.database:
+                self.file.write(f"{key},{self.database[key]}\n")
 
 to_do = to_do_list()
