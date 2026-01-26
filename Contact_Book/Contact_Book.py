@@ -43,9 +43,7 @@ class Contact_Book:
                 break
 
         if user_name_exist:
-            user_input = input(
-                "User already exists, would you like to still add it? (y/n): "
-            ).lower()
+            user_input = input("User already exists, would you like to still add it? (y/n): ").lower()
             if user_input != 'y':
                 print("Contact hasn't been added.")
                 return
