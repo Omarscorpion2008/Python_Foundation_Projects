@@ -7,8 +7,7 @@ class Contact_Book:
         self.data_loader()
         while True:
             user_input = input(
-                "Would you like to Add (a) | Search (s) | Delete (d) | exit (q): "
-            ).lower()
+                "Would you like to Add (a) | Search (s) | Delete (d) | exit (q): ").lower()
 
             if user_input == 'a':
                 self.addition()
@@ -56,8 +55,8 @@ class Contact_Book:
 
     def search(self):
         user_answer = input("Which contact would you like to search for?: ").lower()
-
         found = False
+
         for contact in self.contacts:
             for name, number in contact.items():
                 if user_answer in name.lower():
@@ -69,7 +68,6 @@ class Contact_Book:
 
     def delete(self):
         user_answer = input("Which contact would you like to delete?: ")
-
         new_contacts = []
         deleted = False
 
