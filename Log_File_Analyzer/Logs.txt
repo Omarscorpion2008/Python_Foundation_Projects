@@ -1,0 +1,21 @@
+INFO Application started
+INFO User logged in
+WARNING Disk space low
+ERROR Database connection failed
+INFO User requested report
+ERROR Database connection failed
+WARNING Disk space low
+INFO User logged out
+ERROR Timeout while connecting to server
+INFO User logged in
+ERROR Database connection failed
+WARNING High memory usage
+INFO Scheduled job started
+ERROR Timeout while connecting to server
+INFO Scheduled job finished
+WARNING Disk space low
+INFO User logged in
+ERROR Database connection failed
+ERROR Database connection failed
+WARNING High memory usage
+INFO Application shutdown
