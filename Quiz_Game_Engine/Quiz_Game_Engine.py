@@ -20,24 +20,24 @@ class Quiz:
         
     def Ask(self):
         letters = ['A', 'B', 'C', 'D']
-        for question in self.questions:
+    
+        for index, question in enumerate(self.questions):
             print("\n" + question)
             for i, choice in enumerate(self.questions[question]):
                 print(f"{letters[i]}) {choice}")
+        
             user_input = input("Answer: ").upper()
             self.user_answers.append(user_input)
-    
-        self.score_checker()
 
-    
-    def score_checker(self):
-        for answer in range(len(self.user_answers)):
-            if list(self.answers.values())[answer] == self.user_answers[answer]:
-                print(f"Question Number {answer} was answered correctly !")
-                self.score = self.score + 1
+            correct_answer = list(self.answers.values())[index]
+            if user_input == correct_answer:
+                print("Correct!\n")
+                self.score += 1
             else:
-                print(f"Question Number {answer} was answered wrongly :(")
+                print(f"Wrong! The correct answer was {correct_answer}\n")
+    
         self.output()
+
     
     def output(self):
         self.total_question_count = len(list(self.questions))
