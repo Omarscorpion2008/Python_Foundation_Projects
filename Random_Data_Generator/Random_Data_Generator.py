@@ -58,5 +58,9 @@ class Generator:
             self.emails.append(email)
     
     def data_saver(self):
-        pass
+        with open('Random_Data_Generator/data.csv', 'a+', encoding='utf-8') as file:
+            for line in range(self.number_of_generated_lines):
+                line = str(self.names[line]) + ',' + str(self.ages[line]) + ',' + str(self.emails[line]) + '\n'
+                file.write(line)
+            print("Data Injection completed.")    
 Generator()
