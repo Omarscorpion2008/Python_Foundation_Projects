@@ -7,7 +7,7 @@ class csv_reader:
         self.data_loader()
     
     def data_loader(self):
-        self.file = open('C:/Users/omara/OneDrive/Documents/GitHub/Python_Foundation_Projects/Manual_Csv_Reader/datafile.csv', 'r', encoding='utf-8')
+        self.file = open('Manual_Csv_Reader/datafile.csv', 'r', encoding='utf-8')
         
         self.content = self.file.read()
         self.lines_list = self.content.splitlines()
