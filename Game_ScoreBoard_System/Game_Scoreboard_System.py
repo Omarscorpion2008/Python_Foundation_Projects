@@ -13,8 +13,10 @@ class Scoreboard:
                 self.lines_list = self.content.splitlines()
                 
                 for line in self.lines_list:
+                    if not line.strip():
+                        continue
                     items = line.split(',')
-                    self.database[items[0]] = int(items[-1])
+                    self.database[items[0]] = int(items[1])
         except FileNotFoundError:
             pass
 
@@ -40,7 +42,12 @@ class Scoreboard:
     def addition(self):
         while True: 
             user_name = input("Enter the player's name: ")
-            user_score = int(input("Enter the player's starting score: "))
+            try:
+                user_score = int(input("Enter the player's starting score: "))
+            except ValueError:
+                print("Score must be a number.")
+                return
+            
             if user_name in self.database:
                 print("Player already exists, can't be added.")
             else:
@@ -62,8 +69,8 @@ class Scoreboard:
     def view(self):
         database_sorted = sorted(self.database.items(), key=lambda item: item[1], reverse=True)
         print("Player | Score")
-        for item in database_sorted:
-            print(f'{item[0]} | {item[-1]}')
+        for name, score in database_sorted:
+            print(f'{name} | {score}')
 
     def data_saver(self):
         with open(r'Game_ScoreBoard_System\database.csv','w',encoding='utf-8') as file:
