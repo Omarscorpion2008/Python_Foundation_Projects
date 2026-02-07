@@ -60,9 +60,14 @@ class Scoreboard:
                 print("Player's name not found in database")
 
     def view(self):
-        pass
+        database_sorted = sorted(self.database.items(), key=lambda item: item[1], reverse=True)
+        print("Player | Score")
+        for item in database_sorted:
+            print(f'{item[0]} | {item[-1]}')
 
     def data_saver(self):
-        pass
+        with open(r'Game_ScoreBoard_System\database.csv','w',encoding='utf-8') as file:
+            for key, value in self.database.items():
+                file.write(f"{key},{value}\n")
 
 Scoreboard()
