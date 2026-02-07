@@ -15,6 +15,9 @@ class Shortener:
                 self.shorten()
             elif user_input == 'e':
                 self.expand()
+            elif user_input == 'q':
+                print("Thanks for using the program")
+                break
             else:
                 print("Provide valid input.")
 
@@ -33,10 +36,10 @@ class Shortener:
 
     def expand(self):
         user_input = input("Enter your code: ")
-        while True:
-            if user_input in self.database.keys():
-                extended_url = self.database[user_input]
-                print(f"Your URL: {extended_url}")
-            else:
-                print("Code not found in database.")
-Shortener()()
+        if user_input in self.database:
+            extended_url = self.database[user_input]
+            print(f"Your URL: {extended_url}")
+        else:
+            print("Code not found in database.")
+
+Shortener()
