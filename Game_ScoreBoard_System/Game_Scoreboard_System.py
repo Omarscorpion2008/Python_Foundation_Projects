@@ -49,7 +49,15 @@ class Scoreboard:
                 break
 
     def update(self):
-        pass
+        while True:
+            user_name = input("Enter the player's name: ")
+            user_score = int(input("Enter the player's gained score: "))
+            if user_name in self.database:
+                self.database[user_name] += user_score
+                print("Player's score updated successfully")
+                break
+            else:
+                print("Player's name not found in database")
 
     def view(self):
         pass
