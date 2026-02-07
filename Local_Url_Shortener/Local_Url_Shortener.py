@@ -28,7 +28,7 @@ class Shortener:
             random_character_chunk = random.sample(string.ascii_lowercase, k=3)
             random_character_chunk = ''.join(random_character_chunk)
             url_key = str(random_character_chunk) + str(random_number)
-            if url_key not in self.database.keys():
+            if url_key not in self.database:
                 self.database[url_key] = user_input
                 return print(f"Your Short code: {url_key}")
             else:
