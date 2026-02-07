@@ -32,5 +32,11 @@ class Shortener:
                 continue
 
     def expand(self):
-        print("EXPAND DEF")
+        user_input = input("Enter your code: ")
+        while True:
+            if user_input in self.database.keys():
+                extended_url = self.database[user_input]
+                print(f"Your URL: {extended_url}")
+            else:
+                print("Code not found in database.")
 Shortener()()
