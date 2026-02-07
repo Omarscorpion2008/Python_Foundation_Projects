@@ -38,8 +38,16 @@ class Scoreboard:
                 print("Please provide valid input.")
 
     def addition(self):
-        pass
-    
+        while True: 
+            user_name = input("Enter the player's name: ")
+            user_score = int(input("Enter the player's starting score: "))
+            if user_name in self.database:
+                print("Player already exists, can't be added.")
+            else:
+                self.database[user_name] = user_score
+                print("Player added successfully.")
+                break
+
     def update(self):
         pass
 
