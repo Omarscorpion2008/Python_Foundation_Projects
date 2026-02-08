@@ -8,15 +8,12 @@ class Guessing_games:
         self.guess = 0
         self.difficulty = ''
         self.replay = ''
-        
-    def get_user_input(self):
-        self.attempts = 0
-        self.current_score = 0  
-        self.difficulty = input("Choose the difficulty (e: easy | m: medium | h: hard | q: quit): ")
-        Guessing_games.difficulty_setter(self)
+
+        self.difficulty_setter()
     
     def difficulty_setter(self):
-        if self.difficulty != 'q':
+        while True:
+            self.difficulty = input("Choose the difficulty (e: easy | m: medium | h: hard | q: quit): ")
             if self.difficulty == 'e':
                 self.target_number = random.randint(0, 20)
                 Guessing_games.level_easy(self)
@@ -26,8 +23,11 @@ class Guessing_games:
             elif self.difficulty == 'h':
                self.target_number = random.randint(0, 300)
                Guessing_games.level_hard(self)
-        elif self.difficulty == 'q':
+            elif self.difficulty == 'q':
                 return "Thanks for using the game."
+            else:
+                print("Provide valid input.")
+                continue
             
     def helper(self):
             if self.attempts == 3:
@@ -187,14 +187,13 @@ class Guessing_games:
         print(f" \n Here is your scores : \n Score: {self.current_score} \n High score : {self.high_score}")
         replay = input("Would you like to play again? (y/n): ")
         if replay == 'y':
-            Guessing_games.get_user_input(self)
             Guessing_games.difficulty_setter(self)
             Guessing_games.output(self)
         else:
             print("Thanks for playing!")
             quit()
+
 print("-" * 40)
 print(" - try and guess the correct number ! -")
 print("-" * 40)
-game = Guessing_games()
-game.get_user_input()
+Guessing_games()
