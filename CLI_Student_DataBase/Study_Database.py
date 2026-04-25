@@ -22,8 +22,8 @@ class Student_Database:
                 self.gpa_calculation()
             elif user_input.lower() == 's':
                 self.student_search()
-            elif user_input.loweR() == '':
-                exit()
+            elif user_input.lower() == '':
+                return
     
     def data_load(self):
         database = open('CLI_Student_DataBase\\database.csv', 'r', encoding='utf-8')
@@ -34,19 +34,24 @@ class Student_Database:
             self.data[int(items[0])] = items[1:]
 
         print(self.data)
+
     def data_save(self):
-        pass
+        with open('CLI_Student_DataBase\\database.csv','w', encoding='utf-8') as file:
+            file.write('id,name,GL1,EAPSS,PFA1,IM,CALC1,PROG1,IBI\n')
+            for key in self.data:
+                line = str(key) + ',' + ','.join(map(str,self.data[key])) + '\n'
+                file.write(line)
 
     def student_addtion(self):
         print("Enter the student's details: ")
         name = str(input("Student Name: "))
-        GL1 = int(input("German Language 1 grades: "))
-        EAPSS = int(input("English for Academic Purposes and Study Skills grades: "))
-        PFA1 = int(input("Principles of Financial Accounting 1 grades: "))
-        IM = int(input("Introduction to Managment grades: "))
-        CALC1 = int(input("Calculus 1 grades: "))
-        PROG1 = int(input("Programming 1 grades: "))
-        IBI = int(input("Introduction to Business Informatics grades: "))
+        GL1 = float(input("German Language 1 grades: "))
+        EAPSS = float(input("English for Academic Purposes and Study Skills grades: "))
+        PFA1 = float(input("Principles of Financial Accounting 1 grades: "))
+        IM = float(input("Introduction to Managment grades: "))
+        CALC1 = float(input("Calculus 1 grades: "))
+        PROG1 = float(input("Programming 1 grades: "))
+        IBI = float(input("Introduction to Business Informatics grades: "))
         id = int(list(self.data.keys())[-1]) + int(1)
         self.data[id] = [name, GL1, EAPSS, PFA1, IM, CALC1, PROG1, IBI]
         print("Student added successfully")
