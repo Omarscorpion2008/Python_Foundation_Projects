@@ -1,2 +1,4 @@
-Product Name,Quantity,Price,revenue
-chips,20,5,20
+Product Name,Quantity,Price,Revenue
+chips,20.0,5.0,20.0
+saudi ice cream,10.0,4.0,40.0
+chocolate cookies,10.0,3.0,30.0

@@ -34,9 +34,9 @@ class Inventory:
 
     def data_save(self):
         with open('Inventory_Managment_System\\data.csv','w', encoding='utf-8') as file:
-            file.write('Product Name,Quantity,Price\n')
+            file.write('Product Name,Quantity,Price,Revenue\n')
             for key in self.data:
-                line = str(key) + ',' + ','.join(map(str,self.data[key]))
+                line = str(key) + ',' + ','.join(map(str,self.data[key])) + '\n'
                 file.write(line)
 
     def product_addition(self):
@@ -132,6 +132,18 @@ class Inventory:
         print(self.data)
 
     def inventory_value(self):
-        pass
+        total_inventory_value = 0
+        total_revenue = 0
 
+        for key in self.data.keys():
+            buffer = self.data[key][0] * self.data[key][1]
+            if buffer > 0:
+                print(f"{key} total value: {buffer}")
+                total_inventory_value = total_inventory_value + buffer
+        
+        for key in self.data.keys():
+            total_revenue = total_revenue + self.data[key][2]
+
+        print(f"Total inventory value: {total_inventory_value}")
+        print(f"Total revenue value: {total_revenue}")
 Inventory()
