@@ -39,7 +39,7 @@ class Student_Database:
         with open('CLI_Student_DataBase\\database.csv','w', encoding='utf-8') as file:
             file.write('id,name,GL1,EAPSS,PFA1,IM,CALC1,PROG1,IBI\n')
             for key in self.data:
-                line = str(key) + ',' + ','.join(map(str,self.data[key])) + '\n'
+                line = str(key) + ',' + ','.join(map(str,self.data[key)) + '\n'
                 file.write(line)
 
     def student_addtion(self):
